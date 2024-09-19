@@ -187,30 +187,40 @@ tab0, tab1, tab2, tab3 = st.tabs(
 
 with tab0:
     st.subheader("Distribuição dos alunos por idade")
-    # Caminho da imagem para a primeira aba
+    st.markdown("Aqui você pode adicionar uma breve descrição ou contexto sobre a distribuição dos alunos por idade.")
     image_path = 'assets/imgs/quantidade_de_alunos_por_idade.png'
     image = Image.open(image_path)
-    st.image(image, caption='Distribuição dos alunos por idade', use_column_width=True)
+    st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
+    st.image(image, caption='Distribuição dos alunos por idade', use_column_width=False, width=600)  # Ajuste o valor conforme necessário
+    st.markdown("</div>", unsafe_allow_html=True)
 
 with tab1:
     st.subheader("Distribuição dos alunos por fase")
-    # Caminho da imagem para a segunda aba
+    st.markdown("Aqui você pode adicionar uma breve descrição ou contexto sobre a distribuição dos alunos por fase.")
     image_path = 'assets/imgs/quantidade_de_alunos_por_fase.png'
     image = Image.open(image_path)
-    st.image(image, caption='Distribuição dos alunos por fase', use_column_width=True)
+    st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
+    st.image(image, caption='Distribuição dos alunos por fase', use_column_width=False, width=600)  # Ajuste o valor conforme necessário
+    st.markdown("</div>", unsafe_allow_html=True)
 
 with tab2:
     st.subheader("Distribuição dos alunos por tipo de instituição")
-    # Caminho da imagem para a terceira aba
+    st.markdown("Aqui você pode adicionar uma breve descrição ou contexto sobre a distribuição dos alunos por tipo de instituição.")
     image_path = 'assets/imgs/tipo_instituicao.png'
     image = Image.open(image_path)
-    st.image(image, caption='Distribuição dos alunos por tipo de instituição', use_column_width=True)
+    st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
+    st.image(image, caption='Distribuição dos alunos por tipo de instituição', use_column_width=False, width=600)  # Ajuste o valor conforme necessário
+    st.markdown("</div>", unsafe_allow_html=True)
 
 with tab3:
     st.subheader("Distribuição dos alunos entre as instituições privadas")
-    # Caminho da imagem para a quarta aba
+    st.markdown("Aqui você pode adicionar uma breve descrição ou contexto sobre a distribuição dos alunos entre as instituições privadas.")
     image_path = 'assets/imgs/distribuicao_instituicao_privada.png'
     image = Image.open(image_path)
-    st.image(image, caption='Distribuição dos alunos entre as instituições privadas', use_column_width=True)
+    st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
+    st.image(image, caption='Distribuição dos alunos entre as instituições privadas', use_column_width=False, width=600)  # Ajuste o valor conforme necessário
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
 
 st.divider()
