@@ -22,9 +22,9 @@ with st.container():
 
     tab0, tab1, tab2 = st.tabs(
         tabs=[
-            "Petróleo Brent",
-            "Instituto de Pesquisa Econômica Aplicada (IPEA)",
-            "Meta Prophet"
+            "Sobre a Passos Mágicos",
+            "Metodologia PEDE",
+            "SKlearn"
         ]
     )
 

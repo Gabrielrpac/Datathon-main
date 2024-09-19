@@ -10,7 +10,7 @@ def format_number(number, format='%0.0f'):
 def output_layout():
     show_pages(
         [
-            Page("./main.py", "TECH CHALLENGE 4", use_relative_hash=True),
+            Page("./main.py", "DATATHON", use_relative_hash=True),
             Page("./pages/intro.py", TITULO_INTRODUCAO, use_relative_hash=True),
             Page("./pages/historia.py", TITULO_HISTORIA, use_relative_hash=True),
             Page("./pages/analise.py",TITULO_ANALISE_EXPLORATORIA,use_relative_hash=True,),

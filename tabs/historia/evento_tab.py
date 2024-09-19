@@ -6,7 +6,7 @@ import streamlit as st
 
 class EventoTab(TabInterface):
     def __init__(self, query_periodo_analisado, query_periodo_interesse):
-        self.df = pd.read_csv("assets/csv/timeseries-petroleo-brent.csv")
+        self.df = pd.read_csv("assets\csv\PEDE_PASSOS_DATASET_FIAP.csv")
         self.periodo_analisado = self.df.query(query_periodo_analisado)
         self.periodo_interesse = self.df.query(query_periodo_interesse)
         self.min, self.max, self.variacao_positiva, self.variacao_negativa = self.calcular_variacao()

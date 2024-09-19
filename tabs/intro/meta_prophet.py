@@ -10,14 +10,21 @@ class IntroMetaProphet(TabInterface):
     def render(self):
         with self.tab:
             st.subheader(
-                ":green[META PROPHET]", divider="blue"
+                ":green[O que é o SKlearn?]", divider="blue"
             )
             st.markdown(
                 """
-                O "Prophet da Meta" pode se referir ao software "Meta's Prophet" desenvolvido pela Meta (anteriormente conhecida como Facebook). Prophet é uma ferramenta de previsão de código aberto projetada para análise de séries temporais. Foi lançada pelo Facebook em 2017 e é amplamente utilizada para previsões automatizadas e análises em áreas como economia, finanças, marketing e operações.\n\n
-                O Prophet foi desenvolvido para facilitar a criação de modelos de previsão precisos com apenas alguns parâmetros ajustáveis, o que o torna acessível mesmo para usuários com menos experiência em ciência de dados. Ele é conhecido por sua capacidade de lidar com sazonalidade, tendências e feriados de forma eficaz, além de ser robusto em relação a dados ausentes e outliers.\n\n
-                Essa ferramenta se tornou popular entre analistas de dados e cientistas que precisam de previsões precisas e rápidas com base em dados históricos de séries temporais.
-                <br/><br/>
+                O scikit-learn ou SKlearn é uma biblioteca de código aberto para aprendizado de máquina que oferece uma gama ampla de algoritmos e ferramentas para análise e modelagem de dados. É amplamente usado por cientistas de dados e engenheiros para construir e avaliar modelos preditivos.
+
+                Dentre as principais funcionalidades podemos listar:
+                
+                - Algoritmos de Aprendizado de Máquina: Inclui algoritmos para classificação, regressão, clustering, e redução de dimensionalidade.
+
+                - Pré-processamento: Ferramentas para normalização, padronização e transformação de dados.
+                
+                - Modelos de Seleção: Métodos para avaliação e seleção de modelos, como validação cruzada e busca em grade.
+                
+                - Pipeline: Facilita a construção de pipelines de pré-processamento e modelagem, garantindo um fluxo de trabalho eficiente e reproduzível.
             """,
                 unsafe_allow_html=True,
             )
