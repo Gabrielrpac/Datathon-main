@@ -1,23 +1,23 @@
-import streamlit as st
-from tabs.tab import TabInterface
-from datetime import timedelta
-import time
-import numpy as np
-import pandas as pd
-import plotly.graph_objs as go
-from prophet.plot import plot_plotly
-from prophet.serialize import model_from_json
-from utilidades.const import DATA_INICIAL
-from utilidades.layout import format_number
+# import streamlit as st
+# from tabs.tab import TabInterface
+# from datetime import timedelta
+# import time
+# import numpy as np
+# import pandas as pd
+# import plotly.graph_objs as go
+# from prophet.plot import plot_plotly
+# from prophet.serialize import model_from_json
+# from utilidades.const import DATA_INICIAL
+# from utilidades.layout import format_number
 
 
-class ModeloProphetTab(TabInterface):
-     df_performance: pd.DataFrame
-     df_previsao: pd.DataFrame
-     modelo = None
+# class ModeloProphetTab(TabInterface):
+#      df_performance: pd.DataFrame
+#      df_previsao: pd.DataFrame
+#      modelo = None
 
-     def __init__(self, tab):
-         self.tab = tab
+#      def __init__(self, tab):
+#          self.tab = tab
 
 #         self.df_performance = pd.read_csv("assets/csv/prophet-performance.csv")
 #         self.df_performance["data_no_futuro"] = pd.to_datetime(
