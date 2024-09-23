@@ -1,5 +1,4 @@
 import streamlit as st
-#from tabs.modelo.prophet_tab import ModeloProphetTab
 from utilidades.const import TITULO_MODELO, TITULO_PRINCIPAL
 from utilidades.layout import output_layout
 
@@ -20,19 +19,14 @@ with st.container():
 
     tab0 = st.tabs(tabs=["Modelo de previsão SKlearn"])
 
-#    ModeloProphetTab(tab0)
 
 import streamlit as st
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
-# Título da aplicação
 st.title("Previsão de Alunos para Atingir o Ponto de Virada em 2023")
 
-# Carregar os dados
-# Supondo que você tenha um arquivo CSV com os dados. 
-# Modifique 'seu_arquivo.csv' pelo caminho do seu arquivo.
 df = pd.read_csv('assets/csv/PEDE_PASSOS_DATASET_FIAP.csv', sep = ';')
 
 df.dropna(subset=['IPV_2020', 'IPV_2021', 'IPV_2022'], inplace=True)

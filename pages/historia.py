@@ -1,146 +1,3 @@
-# import streamlit as st
-# import pandas as pd
-# import plotly.graph_objs as go
-# from tabs.historia.evento1_tab import HistoriaEvento1Tab
-# from tabs.historia.evento2_tab import HistoriaEvento2Tab
-# from tabs.historia.evento3_tab import HistoriaEvento3Tab
-# from tabs.historia.evento4_tab import HistoriaEvento4Tab
-# from tabs.historia.evento5_tab import HistoriaEvento5Tab
-# from tabs.historia.evento6_tab import HistoriaEvento6Tab
-# from tabs.historia.evento7_tab import HistoriaEvento7Tab
-# from tabs.historia.evento8_tab import HistoriaEvento8Tab
-# from utilidades.const import TITULO_HISTORIA, TITULO_PRINCIPAL
-# from utilidades.layout import output_layout
-
-# st.set_page_config(
-#     page_title=f"{TITULO_HISTORIA} | {TITULO_PRINCIPAL}",
-#     layout="wide",
-# )
-# output_layout()
-
-
-# def plot_grafico_evolucao_preco_petroleo():
-#     def add_ponto_interesse(fig, ponto, text_index, label):
-#         fig.add_trace(
-#             go.Scatter(
-#                 x=[ponto.ds.values[0]],
-#                 y=[ponto.y.values[0]],
-#                 mode="markers",
-#                 text=1,
-#                 marker=dict(color="red", size=10, line=dict(color="white", width=1)),
-#                 name=label,
-#             )
-#         )
-#         fig.add_annotation(
-#             x=ponto.ds.values[0],
-#             y=ponto.y.values[0] + 4,
-#             text=text_index,
-#             showarrow=False,
-#             font=dict(color="white", size=10),
-#             bgcolor="red",
-#             borderwidth=1,
-#             bordercolor="white",
-#         )
-
-#     df = pd.read_csv("assets/csv/timeseries-petroleo-brent.csv")
-
-#     fig = go.Figure()
-#     fig.add_trace(
-#         go.Scatter(x=df.ds, y=df.y, mode="lines", name="Preço do barril de petróleo")
-#     )
-#     add_ponto_interesse(
-#         fig, df.query('ds == "1990-08-02"'), 
-#             1, "1. Guerra do Golfo (1990-1991)"
-#     )
-#     add_ponto_interesse(
-#         fig,
-#         df.query('ds == "2001-09-11"'),
-#         2,
-#         "2. Atentados 11 de Setembro (2001)",
-#     )
-#     add_ponto_interesse(
-#         fig, df.query('ds == "2003-03-20"'), 3, "3. Guerra do Iraque (2003-2011)"
-#     )
-#     add_ponto_interesse(
-#         fig, df.query('ds == "2007-08-01"'), 4, "4. Crise financeira global (2007-2009)"
-#     )
-#     add_ponto_interesse(
-#         fig, df.query('ds == "2010-12-20"'), 5, "5. Primavera Árabe (2010-2012)"
-#     )
-#     add_ponto_interesse(
-#         fig,
-#         df.query('ds == "2014-11-28"'),
-#         6,
-#         "6. OPEP - Grande produção e baixa demanda (2014-2015)",
-#     )
-#     add_ponto_interesse(
-#         fig, df.query('ds == "2020-01-30"'), 7, "7. Pandemia de COVID-19 (2020-2022)"
-#     )
-#     add_ponto_interesse(
-#         fig,
-#         df.query('ds == "2022-02-24"'),
-#         8,
-#         "8. Conflito Rússia-Ucrânia (2022-presente)",
-#     )
-#     fig.update_layout(
-#         title="Evolução do preço do barril de petróleo Brent ao longo das decádas (1987 até hoje)",
-#         xaxis_title="Data",
-#         yaxis_title="Preço em US$",
-#         height=640,
-#     )
-
-#     st.plotly_chart(fig, use_container_width=True)
-
-
-# with st.container():
-
-#     with open("assets/historia.css") as f:
-#         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-#     st.header(f":green[{TITULO_HISTORIA}]")
-#     st.markdown(
-#         """
-#         Ao longo dos anos, diversos eventos significativos, como guerras e revoluções, influenciaram profundamente o contexto geopolítico global de suas respectivas épocas. Esses acontecimentos desempenharam um papel crucial nas oscilações dos preços do petróleo, uma commodity fundamental na economia mundial.\n\n
-        
-#         A seguir, serão apresentados alguns dos principais eventos que influenciaram diretamente
-        
-#         * Guerra do Golfo (1990-1991)
-#         * Atentados terroristas nos EUA (2001)
-#         * Guerra do Iraque (2003-2011)
-#         * Crise financeira global (2007-2009)
-#         * Primavera Árabe (2010-2012)
-#         * OPEP - Grande ritmo de produção e baixa demanda (2014-2015)
-#         * Pandemia de COVID-19 (2020-2022)
-#         * Conflito Rússia-Ucrânia (2022~)
-        
-#         Esses eventos não apenas alteraram o equilíbrio geopolítico global, mas também tiveram impactos diretos nos mercados de petróleo, influenciando seus preços e volatilidade ao longo dos anos.
-#     """
-#     )
-
-#     plot_grafico_evolucao_preco_petroleo()
-
-#     tab0, tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(
-#         tabs=[
-#             "Guerra do Golfo (1990-1991)",
-#             "Atentados terroristas nos EUA (2001)",
-#             "Guerra do Iraque (2003-2011)",
-#             "Crise financeira global (2007-2009)",
-#             "Primavera Árabe (2010-2012)",
-#             "OPEP - Grande ritmo de produção e baixa demanda (2014-2015)",
-#             "Pandemia de COVID-19 (2020-2022)",
-#             "Conflito Rússia-Ucrânia (2022~)",
-#         ]
-#     )
-
-#     HistoriaEvento1Tab(tab0)
-#     HistoriaEvento2Tab(tab1)
-#     HistoriaEvento3Tab(tab2)
-#     HistoriaEvento4Tab(tab3)
-#     HistoriaEvento5Tab(tab4)
-#     HistoriaEvento6Tab(tab5)
-#     HistoriaEvento7Tab(tab6)
-#     HistoriaEvento8Tab(tab7)
-
 import streamlit as st
 import pandas as pd
 from PIL import Image
@@ -158,21 +15,12 @@ with st.container():
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     st.header(f":green[{TITULO_HISTORIA}]")
     st.markdown(
-        """
-        Ao longo dos anos, diversos eventos significativos, como guerras e revoluções, influenciaram profundamente o contexto geopolítico global de suas respectivas épocas. Esses acontecimentos desempenharam um papel crucial nas oscilações dos preços do petróleo, uma commodity fundamental na economia mundial.\n\n
+    """
+        A Instituição Passos Mágicos desempenha um papel crucial no apoio a crianças e adolescentes em situação de vulnerabilidade social, buscando promover seu desenvolvimento integral por meio de educação, cultura e suporte emocional. Para entender melhor o impacto de suas atividades e identificar áreas de melhoria, a análise exploratória de dados se torna uma ferramenta fundamental.
 
-        A seguir, serão apresentados alguns dos principais eventos que influenciaram diretamente
+        Este projeto visa explorar os dados coletados pela instituição, buscando padrões e insights que possam informar estratégias de atuação e aprimorar a eficácia dos programas oferecidos. A análise será realizada em diversas dimensões, incluindo o perfil dos atendidos, a fase em que o aluno se encontra no programa e o tipo de atividades participadas, além dos resultados alcançados em termos de desenvolvimento pessoal e acadêmico.
 
-        * Guerra do Golfo (1990-1991)
-        * Atentados terroristas nos EUA (2001)
-        * Guerra do Iraque (2003-2011)
-        * Crise financeira global (2007-2009)
-        * Primavera Árabe (2010-2012)
-        * OPEP - Grande ritmo de produção e baixa demanda (2014-2015)
-        * Pandemia de COVID-19 (2020-2022)
-        * Conflito Rússia-Ucrânia (2022~)
-
-        Esses eventos não apenas alteraram o equilíbrio geopolítico global, mas também tiveram impactos diretos nos mercados de petróleo, influenciando seus preços e volatilidade ao longo dos anos.
+        Por meio dessa análise, esperamos mapear a distribuição dos alunos envolvidos e também identificar oportunidades para otimização do esforço e das ações da instituição, garantindo que cada criança e adolescente tenha acesso ao suporte necessário para alcançar seu potencial máximo.
     """
     )
 
@@ -187,20 +35,20 @@ tab0, tab1, tab2, tab3 = st.tabs(
 
 with tab0:
     st.subheader("Distribuição dos alunos por idade")
-    st.markdown("Aqui você pode adicionar uma breve descrição ou contexto sobre a distribuição dos alunos por idade.")
+    st.markdown("A análise dos dados coletados revela insights sobre a faixa etária predominante, o que pode influenciar as estratégias de intervenção e o planejamento das atividades.Ao examinar as idades dos alunos, observamos uma variação significativa, com a presença de jovens desde os 7 até os 20 anos. A maioria dos alunos se concentra nas idades entre 10 e 17 anos, o que é comum em instituições que atendem crianças e adolescentes em desenvolvimento. Essa concentração pode sugerir a necessidade de programas direcionados a essas faixas etárias específicas, abordando questões pertinentes a essa fase da vida, como transição escolar, desenvolvimento social e emocional, e preparação para a vida adulta. Ao examinar as idades dos alunos, observamos uma variação significativa, com a presença de jovens desde os 7 até os 20 anos. A maioria dos alunos se concentra nas idades entre 10 e 17 anos, o que é comum em instituições que atendem crianças e adolescentes em desenvolvimento. Essa concentração pode sugerir a necessidade de programas direcionados a essas faixas etárias específicas, abordando questões pertinentes a essa fase da vida.")
     image_path = 'assets/imgs/quantidade_de_alunos_por_idade.png'
     image = Image.open(image_path)
     st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
-    st.image(image, caption='Distribuição dos alunos por idade', use_column_width=False, width=600)  # Ajuste o valor conforme necessário
+    st.image(image, caption='Distribuição dos alunos por idade', use_column_width=False, width=600)
     st.markdown("</div>", unsafe_allow_html=True)
 
 with tab1:
     st.subheader("Distribuição dos alunos por fase")
-    st.markdown("Aqui você pode adicionar uma breve descrição ou contexto sobre a distribuição dos alunos por fase.")
+    st.markdown("A Instituição Passos Mágicos organiza seus alunos em fases que correspondem aos níveis do sistema de ensino brasileiro. Essa estrutura não apenas facilita o acompanhamento do progresso educacional, mas também permite à instituição desenvolver atividades e intervenções específicas para cada grupo etário e nível de aprendizado. A fase 1, que abrange os alunos do 3º e 4º ano do ensino fundamental, apresenta o maior número de alunos, totalizando 172. Isso sugere que a instituição possui uma forte capacidade de atrair e manter alunos nessa faixa inicial do ensino fundamental, possivelmente refletindo um maior número de crianças nessa idade em situação de vulnerabilidade. Em contrapartida, as fases mais avançadas, especialmente as do ensino médio e da universidade, apresentam um número significativamente menor de alunos. Isso pode indicar desafios na retenção de jovens conforme avançam na educação, seja devido a fatores sociais, econômicos ou à falta de apoio contínuo. A fase 4, com apenas 55 alunos, e a fase 8, com 24, ressaltam a necessidade de estratégias específicas para apoiar a transição dos alunos para os anos finais do ensino fundamental e a continuidade no ensino superior. Em resumo, a análise da distribuição de alunos por fases do programa da Instituição Passos Mágicos revela um padrão que pode orientar ações futuras. Ao entender onde estão concentrados os alunos e quais fases apresentam maiores desafios, a instituição pode desenvolver programas mais eficazes e direcionados, garantindo que cada aluno receba o suporte necessário para alcançar seu pleno potencial educacional. Essa abordagem não só melhora a experiência dos alunos, mas também fortalece o impacto positivo da instituição em suas vidas.")
     image_path = 'assets/imgs/quantidade_de_alunos_por_fase.png'
     image = Image.open(image_path)
     st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
-    st.image(image, caption='Distribuição dos alunos por fase', use_column_width=False, width=600)  # Ajuste o valor conforme necessário
+    st.image(image, caption='Distribuição dos alunos por fase', use_column_width=False, width=600)
     st.markdown("</div>", unsafe_allow_html=True)
 
 with tab2:
@@ -209,7 +57,7 @@ with tab2:
     image_path = 'assets/imgs/tipo_instituicao.png'
     image = Image.open(image_path)
     st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
-    st.image(image, caption='Distribuição dos alunos por tipo de instituição', use_column_width=False, width=600)  # Ajuste o valor conforme necessário
+    st.image(image, caption='Distribuição dos alunos por tipo de instituição', use_column_width=False, width=600)
     st.markdown("</div>", unsafe_allow_html=True)
 
 with tab3:
@@ -218,7 +66,7 @@ with tab3:
     image_path = 'assets/imgs/distribuicao_instituicao_privada.png'
     image = Image.open(image_path)
     st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
-    st.image(image, caption='Distribuição dos alunos entre as instituições privadas', use_column_width=False, width=600)  # Ajuste o valor conforme necessário
+    st.image(image, caption='Distribuição dos alunos entre as instituições privadas', use_column_width=False, width=600)
     st.markdown("</div>", unsafe_allow_html=True)
 
 
