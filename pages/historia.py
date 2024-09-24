@@ -53,7 +53,7 @@ with tab1:
 
 with tab2:
     st.subheader("Distribuição dos alunos por tipo de instituição")
-    st.markdown("Aqui você pode adicionar uma breve descrição ou contexto sobre a distribuição dos alunos por tipo de instituição.")
+    st.markdown("Ao analisarmos os dados sobre a distribuição dos alunos por tipo de instituição concluímos que a maioria significativa dos alunos da ONG está matriculada em escolas públicas, representando cerca de 85% do total, enquanto os alunos de escolas particulares compõem cerca de 15%. A concentração majoritária de alunos em escolas públicas indica que a ONG atende predominantemente alunos de baixa ou média renda, dado que o acesso à escola pública é mais comum em contextos de vulnerabilidade social. A atuação da ONG passa a ser essencial para fornecer suporte acadêmico e social a esses alunos, especialmente os das escolas públicas, onde os recursos podem ser mais limitados.")
     image_path = 'assets/imgs/tipo_instituicao.png'
     image = Image.open(image_path)
     st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
@@ -62,7 +62,7 @@ with tab2:
 
 with tab3:
     st.subheader("Distribuição dos alunos entre as instituições privadas")
-    st.markdown("Aqui você pode adicionar uma breve descrição ou contexto sobre a distribuição dos alunos entre as instituições privadas.")
+    st.markdown("O gráfico de barras mostra a distribuição dos alunos da Passos Mágicos entre diferentes instituições privadas. Com base no gráfico, a Rede Decisão/União se destaca de forma significativa, atendendo mais de 100 alunos, o que representa a maior parcela dos estudantes matriculados em instituições privadas. Isso indica uma forte concentração dos alunos em uma única rede de ensino, o que pode ser resultado de parcerias específicas ou do perfil socioeconômico da comunidade atendida. A predominância de uma instituição privada pode sugerir que a instituição já tem e deve explorar mais parcerias com a Rede Decisão/União, dada a representatividade dela entre os alunos. Fortalecer essa relação pode gerar melhores resultados para os estudantes. Também seria interessante a ONG buscar diversificar suas parcerias com outras instituições privadas que possam acolher mais alunos, equilibrando melhor a distribuição e potencialmente oferecendo oportunidades educacionais variadas.")
     image_path = 'assets/imgs/distribuicao_instituicao_privada.png'
     image = Image.open(image_path)
     st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)

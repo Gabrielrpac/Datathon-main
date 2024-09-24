@@ -10,12 +10,12 @@ def format_number(number, format='%0.0f'):
 def output_layout():
     show_pages(
         [
-            Page("./main.py", "DATATHON", use_relative_hash=True),
-            Page("./pages/intro.py", TITULO_INTRODUCAO, use_relative_hash=True),
-            Page("./pages/historia.py", TITULO_HISTORIA, use_relative_hash=True),
-            Page("./pages/analise.py",TITULO_ANALISE_EXPLORATORIA,use_relative_hash=True,),
-            Page("./pages/modelo.py", TITULO_MODELO, use_relative_hash=True),
-            Page("./pages/refs.py",TITULO_REFERENCIAS, use_relative_hash=True),
+            Page("./main.py","DATATHON",":books:", use_relative_hash=True),
+            Page("./pages/intro.py", TITULO_INTRODUCAO, ":open_book:", use_relative_hash=True),
+            Page("./pages/historia.py", TITULO_HISTORIA, ":blue_book:", use_relative_hash=True),
+            Page("./pages/analise.py",TITULO_ANALISE_EXPLORATORIA, ":pencil:",use_relative_hash=True,),
+            Page("./pages/modelo.py", TITULO_MODELO, ":dart:", use_relative_hash=True),
+            Page("./pages/refs.py",TITULO_REFERENCIAS, ":globe_with_meridians:", use_relative_hash=True),
         ]
     )
 
