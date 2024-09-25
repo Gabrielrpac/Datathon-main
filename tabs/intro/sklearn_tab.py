@@ -2,7 +2,7 @@ import streamlit as st
 from tabs.tab import TabInterface
 
 
-class IntroMetaProphet(TabInterface):
+class IntroSKlearn(TabInterface):
     def __init__(self, tab):
         self.tab = tab
         self.render()

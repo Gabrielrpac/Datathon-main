@@ -1,7 +1,7 @@
 import streamlit as st
-from tabs.intro.ipea_tab import IntroIPEATab
-from tabs.intro.meta_prophet import IntroMetaProphet
-from tabs.intro.petroleo_brent_tab import IntroPetroleoBrentTab
+from tabs.intro.pede_tab import IntroPEDE
+from tabs.intro.sklearn_tab import IntroSKlearn
+from tabs.intro.pm_tab import IntroPM
 from utilidades.const import TITULO_INTRODUCAO, TITULO_PRINCIPAL
 from utilidades.layout import output_layout
 
@@ -28,6 +28,6 @@ with st.container():
         ]
     )
 
-    IntroPetroleoBrentTab(tab0)
-    IntroIPEATab(tab1)
-    IntroMetaProphet(tab2)
+    IntroPM(tab0)
+    IntroPEDE(tab1)
+    IntroSKlearn(tab2)

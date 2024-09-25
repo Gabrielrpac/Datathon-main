@@ -1,8 +1,10 @@
 import streamlit as st
 import pandas as pd
+import streamlit as st
 from PIL import Image
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from utilidades.const import TITULO_MODELO, TITULO_PRINCIPAL
 from utilidades.layout import output_layout
 
@@ -84,11 +86,13 @@ with tab0:
     # Exibir notas de corte
     st.subheader("Notas de Corte")
     st.markdown("Vamos iniciar realizando uma :green[previsão da nota de corte] utilizando os dados dos anos anteriores para cálcular a nota para o :green[ano de 2023]. A combinação dessas informações enriquece a análise do Ponto de Virada, permitindo avaliar a relação entre os resultados obtidos no desenvolvimento escolar dos alunos da associação e a avaliação específica do IPV. A junção desses dois conjuntos de dados pode servir como :green[ferramentas valiosas] para a Associação Passos Mágicos na avaliação dos alunos em relação aos programas de bolsas de estudo, cursos e treinamentos, e intercâmbios.")
-    st.write(f"Nota de corte para 2020: {nota_corte_2020:.2f}")
-    st.write(f"Nota de corte para 2021: {nota_corte_2021:.2f}")
-    st.write(f"Nota de corte para 2022: {nota_corte_2022:.2f}")
-    st.write(f"Nota de corte para 2023: {nota_corte_2023:.2f}")
+    st.write(f"Nota de corte para 2020: :green[{nota_corte_2020:.2f}]")
+    st.write(f"Nota de corte para 2021: :green[{nota_corte_2021:.2f}]")
+    st.write(f"Nota de corte para 2022: :green[{nota_corte_2022:.2f}]")
+    st.write(f"Nota de corte para 2023: :green[{nota_corte_2023:.2f}]")
     st.markdown("</div>", unsafe_allow_html=True)
+
+    st.divider()
 
     # Exibir os resultados
     st.subheader("Resultados dos Alunos")
@@ -96,10 +100,74 @@ with tab0:
     st.write(resultado_df)
     
 with tab1:
-    st.subheader("Distribuição dos alunos por fase")
-    st.markdown("A Instituição Passos Mágicos organiza seus alunos em fases que correspondem aos níveis do sistema de ensino brasileiro. Essa estrutura não apenas facilita o acompanhamento do progresso educacional, mas também permite à instituição desenvolver atividades e intervenções específicas para cada grupo etário e nível de aprendizado. A fase 1, que abrange os alunos do 3º e 4º ano do ensino fundamental, apresenta o maior número de alunos, totalizando 172. Isso sugere que a instituição possui uma forte capacidade de atrair e manter alunos nessa faixa inicial do ensino fundamental, possivelmente refletindo um maior número de crianças nessa idade em situação de vulnerabilidade. Em contrapartida, as fases mais avançadas, especialmente as do ensino médio e da universidade, apresentam um número significativamente menor de alunos. Isso pode indicar desafios na retenção de jovens conforme avançam na educação, seja devido a fatores sociais, econômicos ou à falta de apoio contínuo. A fase 4, com apenas 55 alunos, e a fase 8, com 24, ressaltam a necessidade de estratégias específicas para apoiar a transição dos alunos para os anos finais do ensino fundamental e a continuidade no ensino superior. Em resumo, a análise da distribuição de alunos por fases do programa da Instituição Passos Mágicos revela um padrão que pode orientar ações futuras. Ao entender onde estão concentrados os alunos e quais fases apresentam maiores desafios, a instituição pode desenvolver programas mais eficazes e direcionados, garantindo que cada aluno receba o suporte necessário para alcançar seu pleno potencial educacional. Essa abordagem não só melhora a experiência dos alunos, mas também fortalece o impacto positivo da instituição em suas vidas.")
-    image_path = 'assets/imgs/quantidade_de_alunos_por_fase.png'
+    st.subheader("Métricas utilizadas para avaliar os resultados do Modelo de Previsão")
+    st.markdown(
+        """
+O MSE mede a :green[média dos quadrados dos erros], isto é, a média das diferenças ao quadrado entre os valores previstos e os reais. Quanto :green[menor o MSE], melhor o modelo está se ajustando ao seu dataset. :green[Um MSE de 0.01 é bastante baixo], indicando que o modelo está fazendo previsões muito próximas aos valores reais.
+
+O RMSE é simplesmente a :green[raiz quadrada do MSE] e oferece a vantagem de estar nas mesmas unidades que a variável de resposta. Um :green[RMSE de 0.08], sendo uma magnitude pequena, sugere que o modelo está com um bom ajuste.
+
+O MAE fornece a :green[média dos erros absolutos], isto é, as diferenças médias entre valores previstos e observados, sem considerar a direção do erro (positivo ou negativo). Um :green[MAE de 0.03] indica que, em média, as previsões do modelo desviam-se muito pouco dos valores reais.
+
+O R² é uma medida de :green[quão bem as variáveis independentes estão prevendo a variável dependente]. Um R² de :green[1.00] é excepcional, indicando que o modelo explica 100% da variabilidade da resposta prevista pelos dados.
+        """
+    )
+    
+    st.divider()
+    
+    # Métricas MSE RMSE MAE R²
+    mse = mean_squared_error(y_test, model.predict(X_test))
+    st.write(f"Erro Quadrático Médio (MSE): :green[{mse:.2f}]")
+
+    rmse = mse ** 0.5
+    st.write(f"Raiz do Erro Quadrático Médio (RMSE): :green[{rmse:.2f}]")
+
+    mae = mean_absolute_error(y_test, model.predict(X_test))
+    st.write (f"Erro Absoluto Médio (MAE): :green[{mae:.2f}]")
+
+    r2 = r2_score(y_test, model.predict(X_test))
+    st.write(f"Coeficiente de Determinação (R²): :green[{r2:.2f}]")
+    
+    st.divider()
+
+    st.subheader("Gráfico de Dispersão - IPV Previsto vs Nota de Corte")
+    st.markdown(
+        """
+Este gráfico compara os :green[valores de IPV previstos para 2023] com a :green[nota de corte calculada]. A linha vermelha mostra a :green[nota de corte], que serve como um limite para determinar quais alunos atingem o ponto de virada.
+
+Este gráfico ajuda a visualizar a distribuição das previsões em relação ao limite, permitindo avaliar se o modelo está prevendo corretamente as classificações.
+        """)
+    image_path = 'assets/imgs/dispersao_ipv.png'
     image = Image.open(image_path)
     st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
     st.image(image, caption='Distribuição dos alunos por fase', use_column_width=False, width=600)
     st.markdown("</div>", unsafe_allow_html=True)
+
+    st.subheader("Histograma - Distribuição do IPV Previsto")
+    st.markdown(
+        """
+O histograma mostra a :green[distribuição dos valores de IPV previstos]. A linha vermelha novamente marca a nota de corte de 2023.
+
+Este gráfico permite avaliar como os valores de IPV estão distribuídos. Se a maioria dos valores previstos estiver próxima ou abaixo da nota de corte, isso sugere que poucos alunos atingirão o ponto de virada.
+        """)
+    image_path = 'assets/imgs/histograma_ipv.png'
+    image = Image.open(image_path)
+    st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
+    st.image(image, caption='Distribuição dos alunos por fase', use_column_width=False, width=600)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    st.subheader("Gráfico de Resíduos")
+    st.markdown(
+        """
+O gráfico de resíduos mostra a diferença entre as previsões e os valores reais de IPV, permitindo analisar o erro do modelo.
+
+Os resíduos devem estar distribuídos de forma :green[aleatória] em torno de zero, o que indicaria que o modelo está fazendo boas previsões :green[sem padrões de erro evidentes]. Se houver uma tendência ou padrão nos resíduos (por exemplo, uma curva), isso pode sugerir que o modelo está sub ou superestimando as previsões em determinadas faixas de IPV, o que indicaria a necessidade de ajustes no modelo.
+
+        """)
+    image_path = 'assets/imgs/residuos.png'
+    image = Image.open(image_path)
+    st.markdown(f"<div style='text-align: center;'>", unsafe_allow_html=True)
+    st.image(image, caption='Distribuição dos alunos por fase', use_column_width=False, width=600)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    st.divider()
