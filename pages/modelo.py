@@ -17,7 +17,11 @@ with st.container():
 
     st.markdown(
         """
-        Prever o preço do barril de petróleo Brent é um desafio crucial devido à sua importância na economia global. O petróleo Brent é usado como referência internacional para determinar os preços de compra e venda em todo o mundo. A ferramenta Prophet é valiosa porque simplifica o processo de previsão de preços, ajudando a entender tendências passadas e sazonalidades que influenciam os preços do petróleo. Isso é vital para empresas, governos e investidores que dependem de previsões precisas para tomar decisões estratégicas, como planejar investimentos, gerenciar riscos financeiros e ajustar políticas econômicas.
+        Este projeto tem como objetivo prever o :green[Índicador do Ponto de Virada (IPV)] dos alunos para o :green[ano de 2023], utilizando técnicas de machine learning com a biblioteca :green[Scikit-learn (SKlearn)]. O modelo de previsão foi desenvolvido com a técnica de Random Forest, um método robusto e amplamente utilizado para análise preditiva, capaz de lidar bem com pequenas variações nos dados.
+
+Além da previsão do IPV, o projeto também calcula a :green[nota de corte para o ano de 2023] e se o aluno em questão :green[atingiria o resultado ou não]. A nota de corte é determinada :green[somando] a :green[média do IPV do ano analisado ao desvio padrão], estabelecendo um parâmetro para avaliar quais alunos superam ou atingem o desempenho esperado.
+
+Embora a base de dados seja limitada, contendo informações de apenas três anos (2020, 2021 e 2022), a técnica de Random Forest foi escolhida por sua capacidade de explorar relações complexas entre variáveis e gerar previsões confiáveis, mesmo com um conjunto de dados reduzido. Através desse modelo, esperamos capturar padrões históricos no IPV e prever os resultados futuros com a maior precisão possível.
     """
     )
 
@@ -77,19 +81,20 @@ with tab0:
         'Atingirá o ponto de virada': resultados
     })
 
-    # Exibir os resultados
-    st.subheader("Resultados dos Alunos")
-    st.markdown("A análise dos dados coletados revela insights sobre a faixa etária predominante, o que pode influenciar as estratégias de intervenção e o planejamento das atividades.Ao examinar as idades dos alunos, observamos uma variação significativa, com a presença de jovens desde os 7 até os 20 anos. A maioria dos alunos se concentra nas idades entre 10 e 17 anos, o que é comum em instituições que atendem crianças e adolescentes em desenvolvimento. Essa concentração pode sugerir a necessidade de programas direcionados a essas faixas etárias específicas, abordando questões pertinentes a essa fase da vida, como transição escolar, desenvolvimento social e emocional, e preparação para a vida adulta. Ao examinar as idades dos alunos, observamos uma variação significativa, com a presença de jovens desde os 7 até os 20 anos. A maioria dos alunos se concentra nas idades entre 10 e 17 anos, o que é comum em instituições que atendem crianças e adolescentes em desenvolvimento. Essa concentração pode sugerir a necessidade de programas direcionados a essas faixas etárias específicas, abordando questões pertinentes a essa fase da vida.")
-    st.write(resultado_df)
-
     # Exibir notas de corte
     st.subheader("Notas de Corte")
+    st.markdown("Vamos iniciar realizando uma :green[previsão da nota de corte] utilizando os dados dos anos anteriores para cálcular a nota para o :green[ano de 2023]. A combinação dessas informações enriquece a análise do Ponto de Virada, permitindo avaliar a relação entre os resultados obtidos no desenvolvimento escolar dos alunos da associação e a avaliação específica do IPV. A junção desses dois conjuntos de dados pode servir como :green[ferramentas valiosas] para a Associação Passos Mágicos na avaliação dos alunos em relação aos programas de bolsas de estudo, cursos e treinamentos, e intercâmbios.")
     st.write(f"Nota de corte para 2020: {nota_corte_2020:.2f}")
     st.write(f"Nota de corte para 2021: {nota_corte_2021:.2f}")
     st.write(f"Nota de corte para 2022: {nota_corte_2022:.2f}")
     st.write(f"Nota de corte para 2023: {nota_corte_2023:.2f}")
     st.markdown("</div>", unsafe_allow_html=True)
 
+    # Exibir os resultados
+    st.subheader("Resultados dos Alunos")
+    st.markdown("Agora com base no Ponto de virada calculado para o ano de 2023 realizamos a :green[predição da nota IPV] alcançada pelos alunos com base no valor dos anos anteriores e validamos se a métrica seria atingida ou não.")
+    st.write(resultado_df)
+    
 with tab1:
     st.subheader("Distribuição dos alunos por fase")
     st.markdown("A Instituição Passos Mágicos organiza seus alunos em fases que correspondem aos níveis do sistema de ensino brasileiro. Essa estrutura não apenas facilita o acompanhamento do progresso educacional, mas também permite à instituição desenvolver atividades e intervenções específicas para cada grupo etário e nível de aprendizado. A fase 1, que abrange os alunos do 3º e 4º ano do ensino fundamental, apresenta o maior número de alunos, totalizando 172. Isso sugere que a instituição possui uma forte capacidade de atrair e manter alunos nessa faixa inicial do ensino fundamental, possivelmente refletindo um maior número de crianças nessa idade em situação de vulnerabilidade. Em contrapartida, as fases mais avançadas, especialmente as do ensino médio e da universidade, apresentam um número significativamente menor de alunos. Isso pode indicar desafios na retenção de jovens conforme avançam na educação, seja devido a fatores sociais, econômicos ou à falta de apoio contínuo. A fase 4, com apenas 55 alunos, e a fase 8, com 24, ressaltam a necessidade de estratégias específicas para apoiar a transição dos alunos para os anos finais do ensino fundamental e a continuidade no ensino superior. Em resumo, a análise da distribuição de alunos por fases do programa da Instituição Passos Mágicos revela um padrão que pode orientar ações futuras. Ao entender onde estão concentrados os alunos e quais fases apresentam maiores desafios, a instituição pode desenvolver programas mais eficazes e direcionados, garantindo que cada aluno receba o suporte necessário para alcançar seu pleno potencial educacional. Essa abordagem não só melhora a experiência dos alunos, mas também fortalece o impacto positivo da instituição em suas vidas.")
