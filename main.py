@@ -18,7 +18,7 @@ st.subheader(
 )
 st.markdown(
     """
-    O grande objetivo do Datathon foi de trazer gerar análise e um modelo de previsão para demonstrar o impacto que a ONG “Passos Mágicos” tem realizado sobre a comunidade que atende. A associação busca instrumentalizar o uso da educação como ferramenta para realizar mudanças nas condições de vida das crianças e jovens em vulnerabilidade social.
+    O grande objetivo do Datathon foi de trazer e gerar uma análise e um modelo de previsão para demonstrar o impacto que a ONG “Passos Mágicos” tem realizado sobre a comunidade que atende. A associação busca instrumentalizar o uso da educação como ferramenta para realizar mudanças nas condições de vida das crianças e jovens em vulnerabilidade social.
     
     Com base no dataset de pesquisa extensiva do desenvolvimento educacional no período de 2020, 2021 e 2022, trouxemos uma análise dos dados e também o modelo de predição.
 """
